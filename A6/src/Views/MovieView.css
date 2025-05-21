@@ -1,75 +1,59 @@
+/* MovieView.css */
+
 .app-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: #222;
-  font-family: 'Trebuchet MS', sans-serif;
+    background-color: #e0f7ff; /* light Doraemon blue */
+    min-height: 100vh;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
 }
 
 .movieview-title {
-  color: #00ff99;
-  text-align: center;
-  margin: 20px 0;
-  font-size: 2.5rem;
-  letter-spacing: 2px;
-  position: relative;
-  padding-bottom: 15px;
-  text-shadow: 0 0 5px #00ff99;
-}
-
-.movieview-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 6px;
-  background-color: #00ff99;
-  border-radius: 4px;
-  box-shadow: 0 0 10px #00ff99;
+    text-align: center;
+    color: #0066cc;
+    font-size: 2rem;
+    margin: 1.5rem 0;
 }
 
 .genre-container {
-  display: flex;
-  margin: 20px;
-  gap: 20px;
-  flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 2rem;
 }
 
 .genre-list {
-  width: 220px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .genre-item {
-  padding: 15px;
-  background-color: #003300;
-  color: #00ff99;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  text-align: center;
-  border: 2px solid #005500;
-  font-weight: bold;
-  box-shadow: 0 0 5px #00ff99 inset;
-  cursor: pointer;
+    background-color: #3399ff;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .genre-item:hover {
-  background-color: #006600;
-  transform: translateX(8px) scale(1.05);
-  border-color: #00ff99;
-  box-shadow: 0 0 15px #00ff99;
+    background-color: #007acc;
+    transform: translateY(-3px);
 }
 
 .genre-movies {
-  flex: 1;
-  background-color: #002200;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: inset 0 0 20px #00ff99;
-  color: #00ff99;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    min-height: 300px;
 }

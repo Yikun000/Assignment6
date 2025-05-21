@@ -1,27 +1,146 @@
-.search-input::placeholder {
-    color: #666666; /* softer placeholder color for better readability */
-    opacity: 1; /* ensures placeholder is visible on all browsers */
+/* SearchView.css */
+
+.search-view {
+    background-color: #e0f7ff; /* light Doraemon blue */
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #333;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    width: 60%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #3399ff;
+    border-radius: 30px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    border-color: #ff4d4d;
+}
+
+.loading {
+    text-align: center;
+    font-weight: bold;
+    color: #3399ff;
+}
+
+.search-results-title {
+    text-align: center;
+    color: #0066cc;
+    margin-bottom: 1rem;
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
 }
 
 .search-result-item {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* subtle shadow for card separation */
+    background-color: #f0f8ff;
+    border: 2px solid #cceeff;
+    border-radius: 15px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.2s;
 }
 
 .search-result-item:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 8px 15px rgba(255, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+.search-result-poster {
+    margin-bottom: 0.5rem;
+}
+
+.search-result-image {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.no-image {
+    background-color: #ffcccc;
+    padding: 2rem;
+    border-radius: 10px;
+    color: #900;
+}
+
+.movie-title {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.cart-button {
+    background-color: #3399ff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cart-button:hover {
+    background-color: #007acc;
 }
 
 .cart-button.added {
-    color: #ff0000; /* keep the red text visible even when background changes */
+    background-color: #ffcc00;
+    color: black;
+    cursor: default;
 }
 
-.cart-button:disabled {
-    opacity: 0.6;
+.no-results {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 2rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.pagination-button {
+    padding: 0.5rem 1rem;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.pagination-button:disabled {
+    background-color: #ffcccc;
     cursor: not-allowed;
 }
 
-/* Add smooth transitions for box-shadow */
-.search-result-item, .cart-button {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.2s ease;
+.page-info {
+    font-weight: bold;
+    color: #003366;
 }
