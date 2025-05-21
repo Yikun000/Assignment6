@@ -1,17 +1,13 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import "./Hero.css";
+import './Hero.css';
+import slowbro from '../assets/slowbro.jpg';
 
 function Hero() {
-    const navigate = useNavigate();
-
-    return (
-        <div>
-            <div className="heroSection">
-                <h1 className="heroText">Sign Up On the Latest Movies!</h1>
-            </div>
-        </div>
-    );
+  return (
+    <div className="hero-section">
+      <img className="hero-image" src={slowbro} />
+    </div>
+  );
 }
+
 
 export default Hero;

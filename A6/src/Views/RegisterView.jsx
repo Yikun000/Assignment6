@@ -1,155 +1,115 @@
-import { useState, useContext, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RegisterView.css";
-import Header from "../Components/Header";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { useRef, useState } from "react";
+import { useStoreContext } from "../Context";
 
-// Create a UserContext to store the user's data
-const UserContext = createContext();
+function Register() {
+  const {
+    setFirst,
+    setLast,
+    setEmail,
+    setPassword,
+    setSelected,
+    setLoggedIn,
+  } = useStoreContext();
 
-export function useUser() {
-  return useContext(UserContext);
-}
-
-export default function RegisterView() {
   const navigate = useNavigate();
-  const { setUser } = useUser();
-  
-  // Movie genres list for checkboxes (replace with actual genres from Assignment 5)
-  const movieGenres = [
-    "Action", "Comedy", "Drama", "Horror", "Romance", "Sci-Fi", "Thriller", "Animation", "Documentary"
+
+  const firstName = useRef('');
+  const lastName = useRef('');
+  const email = useRef('');
+  const password = useRef('');
+  const confirmedPassword = useRef('');
+  const [selectedGenres, setSelectedGenres] = useState([]);
+
+  const genres = [
+    "Sci-Fi", "Thriller", "Adventure", "Family", "Animation",
+    "Action", "History", "Fantasy", "Horror", "Comedy"
   ];
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    selectedGenres: [],
-  });
-  
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "selectedGenres") {
-      const selectedGenres = [...formData.selectedGenres];
-      if (selectedGenres.includes(value)) {
-        selectedGenres.splice(selectedGenres.indexOf(value), 1);
+  const handleGenreChange = (e) => {
+    const { value, checked } = e.target;
+    setSelectedGenres(prev => {
+      if (checked) {
+        return [...prev, value];
       } else {
-        selectedGenres.push(value);
+        return prev.filter(g => g !== value);
       }
-      setFormData({ ...formData, selectedGenres });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
+
+    if (selectedGenres.length < 5) {
+      alert("Please select at least 5 genres.");
       return;
     }
 
-    if (formData.selectedGenres.length < 5) {
-      setError("Please select at least 5 genres.");
+    if (confirmedPassword.current.value !== password.current.value) {
+      alert("Your passwords don't match!");
       return;
     }
 
-    setError("");
-    setUser(formData); // Store user information in context
-    alert("Registration successful!");
-    navigate(`/movies/genre/${formData.selectedGenres[0]}`); // Redirect to the first genre
+    setFirst(firstName.current.value);
+    setLast(lastName.current.value);
+    setEmail(email.current.value);
+    setPassword(password.current.value);
+    setSelected(selectedGenres);
+    setLoggedIn(true);
+
+    navigate('/movies');
   };
 
   return (
-    <>
+    <div className="register-view">
       <Header />
       <div className="register-container">
-        <div className="register-form">
-          <h2 className="register-title">Register</h2>
-          <form onSubmit={handleSubmit} className="form">
-            <div className="form-group">
-              <label className="form-label">First Name</label>
-              <input
-                type="text"
-                name="firstName"
-                className="form-input"
-                value={formData.firstName}
-                onChange={handleChange}
-                required
-              />
+        <div className="register-box">
+          <h2>Register to Continue</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="register-group">
+              <input type="text" placeholder="First Name" ref={firstName} required />
             </div>
-            <div className="form-group">
-              <label className="form-label">Last Name</label>
-              <input
-                type="text"
-                name="lastName"
-                className="form-input"
-                value={formData.lastName}
-                onChange={handleChange}
-                required
-              />
+            <div className="register-group">
+              <input type="text" placeholder="Last Name" ref={lastName} required />
             </div>
-            <div className="form-group">
-              <label className="form-label">Email</label>
-              <input
-                type="email"
-                name="email"
-                className="form-input"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
+            <div className="register-group">
+              <input type="email" placeholder="Email" ref={email} required />
             </div>
-            <div className="form-group">
-              <label className="form-label">Password</label>
-              <input
-                type="password"
-                name="password"
-                className="form-input"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
+            <div className="register-group">
+              <input type="password" placeholder="Password" ref={password} required />
             </div>
-            <div className="form-group">
-              <label className="form-label">Confirm Password</label>
-              <input
-                type="password"
-                name="confirmPassword"
-                className="form-input"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                required
-              />
+            <div className="register-group">
+              <input type="password" placeholder="Re-enter Password" ref={confirmedPassword} required />
             </div>
-            <div className="form-group">
-              <label className="form-label">Select Movie Genres</label>
-              <div className="checkbox-group">
-                {movieGenres.map((genre) => (
-                  <label key={genre}>
-                    <input
-                      type="checkbox"
-                      name="selectedGenres"
-                      value={genre}
-                      checked={formData.selectedGenres.includes(genre)}
-                      onChange={handleChange}
-                    />
-                    {genre}
-                  </label>
-                ))}
-              </div>
+            <div className="genre-select">
+              <h3>Select at least 5 Genres</h3>
+              {genres.map(genre => (
+                <div className="genre-select-group" key={genre}>
+                  <input
+                    type="checkbox"
+                    id={genre}
+                    name={genre}
+                    value={genre}
+                    onChange={handleGenreChange}
+                    checked={selectedGenres.includes(genre)}
+                  />
+                  <label htmlFor={genre}>{genre}</label>
+                </div>
+              ))}
             </div>
-            {error && <p className="error-message">{error}</p>}
-            <button type="submit" className="submit-btn">
+            <button type="submit" className="register-button" disabled={selectedGenres.length < 5}>
               Register
             </button>
           </form>
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
+
+export default Register;

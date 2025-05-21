@@ -1,90 +1,125 @@
 /* RegisterView.css */
 
+.register-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #003366;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #ffca28;
+}
+
 .register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #e1f5fe; /* Doraemon blue background */
-    padding: 0 20px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.register-box {
+  background-color: #004080;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(255, 202, 40, 0.7);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.register-box h2 {
+  color: #ffca28;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-shadow: 1px 1px 3px #001f3f;
+}
+
+.register-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.register-group input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ffca28;
+  border-radius: 4px;
+  background-color: #00264d;
+  color: #ffca28;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.register-group input:focus {
+  outline: none;
+  border-color: #ffe082;
+  background-color: #003366;
+}
+
+.genre-select {
+  margin: 20px 0 30px;
+  text-align: left;
+}
+
+.genre-select h3 {
+  margin-bottom: 12px;
+  font-weight: bold;
+  color: #ffca28;
+  text-shadow: 1px 1px 2px #001f3f;
+}
+
+.genre-select-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  user-select: none;
+}
+
+.genre-select-group input[type="checkbox"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #ffca28;
+}
+
+.genre-select-group label {
+  font-size: 1rem;
+  color: #ffca28;
+  cursor: pointer;
+  text-shadow: 1px 1px 2px #001f3f;
+}
+
+.register-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ffca28;
+  color: #003366;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.register-button:disabled {
+  background-color: #b3a04a;
+  cursor: not-allowed;
+  color: #666633;
+}
+
+.register-button:not(:disabled):hover {
+  background-color: #ffc107;
+  color: #001f3f;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .register-box {
+    padding: 30px 20px;
   }
-  
-  .register-form {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .register-title {
-    text-align: center;
-    color: #0277bd;
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-label {
-    font-size: 1rem;
-    color: #01579b;
-  }
-  
-  .form-input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #0277bd;
-    background-color: #f1f8fe;
-    font-size: 1rem;
-    margin-top: 8px;
-    color: #01579b;
-  }
-  
-  .form-input:focus {
-    outline: none;
-    border-color: #0288d1;
-    background-color: #ffffff;
-  }
-  
-  .submit-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #0277bd;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-btn:hover {
-    background-color: #0288d1;
-  }
-  
-  .error-message {
-    color: #d32f2f;
-    font-size: 0.9rem;
-    text-align: center;
-  }
-  
-  p {
-    text-align: center;
-    font-size: 1rem;
-    color: #01579b;
-  }
-  
-  p span {
-    color: #0288d1;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  p span:hover {
-    text-decoration: underline;
-  }
+}

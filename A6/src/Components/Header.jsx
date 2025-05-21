@@ -1,21 +1,71 @@
-import React from 'react';
+import './Header.css';
 import { useNavigate } from 'react-router-dom';
-import "./Header.css";
+import { useStoreContext } from '../Context';
 
 function Header() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { loggedIn, setLoggedIn, firstName } = useStoreContext();
 
-    return (
-        <div>
-            <div className="navBar">
-                <h1 className="navTitle" onClick={() => navigate("/")}>WOOFLIX</h1>
-                <div className="buttonGroup">
-                    <button className="LoginButton" onClick={() => navigate("/login")}>Login</button>
-                    <button className="RegisterButton" onClick={() => navigate("/register")}>Register</button>
-                </div>
+  const handleLogin = () => {
+    navigate('/login');
+  };
+  
+  const handleRegister = () => {
+    navigate('/register');
+  };
+
+  const handleCart = () => {
+    navigate('/cart');
+  };
+
+  const handleSettings = () => {
+    navigate('/settings');
+  };
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+    navigate('/');
+  };
+
+  const handleHome = () => {
+    navigate('/');
+  };
+
+  const handleSearch = () => {
+    navigate('/movies/search');
+  };
+
+  return (
+    <header className="header">
+      <h1 className="title" onClick={handleHome}>WOOFLIX</h1>
+      
+      <div className="header-content">
+        {loggedIn && (
+          <>
+            <div className="welcome-message">
+              Hello {firstName}!
             </div>
+          </>
+        )}
+
+        <div className="buttons">
+          {!loggedIn ? (
+            <>
+              <button className="nav-button" onClick={handleLogin}>Login</button>
+              <button className="nav-button" onClick={handleRegister}>Register</button>
+            </>
+          ) : (
+            <>
+              <button className="nav-button" onClick={handleSearch}>Search</button>
+              <button className="nav-button" onClick={handleCart}>Cart</button>
+              <button className="nav-button" onClick={handleSettings}>Settings</button>
+              <button className="nav-button" onClick={handleLogout}>Logout</button>
+            </>
+          )}
         </div>
-    );
+      </div>
+    </header>
+  );
 }
 
 export default Header;

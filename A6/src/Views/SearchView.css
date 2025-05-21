@@ -1,0 +1,27 @@
+.search-input::placeholder {
+    color: #666666; /* softer placeholder color for better readability */
+    opacity: 1; /* ensures placeholder is visible on all browsers */
+}
+
+.search-result-item {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* subtle shadow for card separation */
+}
+
+.search-result-item:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 15px rgba(255, 0, 0, 0.4);
+}
+
+.cart-button.added {
+    color: #ff0000; /* keep the red text visible even when background changes */
+}
+
+.cart-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Add smooth transitions for box-shadow */
+.search-result-item, .cart-button {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.2s ease;
+}

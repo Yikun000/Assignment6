@@ -1,85 +1,140 @@
+.hero {
+  padding: 20px;
+  background-color: #00aaff;
+  min-height: 100vh;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #003366;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.hero h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: #ffca28;
+  border-radius: 2px;
+}
+
 .genre-view-container {
-    padding: 40px 20px;
-    background: linear-gradient(to bottom, #e1f5fe, #b3e5fc);
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.genre-view-item {
+  background-color: #0077cc;
+  border-radius: 10px;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  width: calc(25% - 1rem);
+  box-shadow: 0 4px 6px rgba(255, 202, 40, 0.4);
+}
+
+.genre-view-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(255, 202, 40, 0.8);
+}
+
+.genre-view-image {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 3px solid #ffca28;
+}
+
+@media (max-width: 1200px) {
+  .genre-view-item {
+    width: calc(33.33% - 1rem);
   }
-  
-  .genre-title {
-    font-size: 2.5rem;
-    color: #0277bd; 
-    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .genre-view-item {
+    width: calc(50% - 1rem);
   }
-  
-  .movies-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
-  }
-  
-  .movie-card-link {
-    text-decoration: none;
-  }
-  
-  .movie-card {
-    background-color: #ffffff;
-    border-radius: 16px;
-    width: 180px;
-    padding: 10px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-  }
-  
-  .movie-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .movie-poster {
-    width: 100%;
-    border-radius: 12px;
-  }
-  
-  .movie-title {
-    margin-top: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #d32f2f; 
-  }
-  
-  .pagination-controls {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .pagination-controls button {
-    background-color: #ffca28; 
-    color: #01579b;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .pagination-controls button:hover:not(:disabled) {
-    background-color: #ffd54f;
-    transform: translateY(-2px);
-  }
-  
-  .pagination-controls button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  .pagination-controls span {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #0277bd;
-  }
+}
+
+.genre-view-pagination-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.genre-view-pagination-button {
+  padding: 15px 30px;
+  border: 2px solid #004080;
+  background-color: #0077cc;
+  color: #ffca28;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.genre-view-pagination-button:hover {
+  border-color: #ffca28;
+  background-color: #004080;
+  color: #ffffff;
+}
+
+.movie-title {
+  color: #ffca28;
+  font-size: 1.1rem;
+  margin: 10px 0;
+  text-align: center;
+  text-shadow: 1px 1px 2px #003366;
+}
+
+.cart-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffca28;
+  color: #003366;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.cart-button:hover {
+  background-color: #ffc107;
+  color: #001f3f;
+}
+
+.cart-button.added {
+  background-color: #003366;
+  border: 2px solid #ffca28;
+  color: #ffca28;
+}
+
+.cart-button.added:hover {
+  background-color: #004080;
+  color: #ffffff;
+}

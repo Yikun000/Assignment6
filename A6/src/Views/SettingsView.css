@@ -1,0 +1,40 @@
+/* Improve focus visibility for inputs and checkboxes */
+.settings-group input:focus,
+.genre-select-group input[type="checkbox"]:focus {
+    outline: 2px solid #ff0000;
+    outline-offset: 2px;
+}
+
+/* Slightly enhance hover effect on genre-select-group for better feedback */
+.genre-select-group:hover {
+    background-color: #444444;
+    transition: background-color 0.2s ease;
+}
+
+/* Make error message font-weight bold for more emphasis */
+.error-message {
+    font-weight: 600;
+}
+
+/* Add smooth transition to error message appearance */
+.error-message {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Optional: add disabled style for the settings button */
+.settings-button:disabled {
+    background-color: #660000;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Add cursor pointer to labels in genre-select-group for better UX */
+.genre-select-group label {
+    cursor: pointer;
+}
+
+/* Make inputs' placeholder color softer */
+.settings-group input::placeholder {
+    color: #999999;
+    opacity: 1;
+}

@@ -1,0 +1,138 @@
+.movie-detail {
+  padding: 40px;
+  color: #0d47a1;
+  background-color: #e0f7fa;
+  min-height: 100vh;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.movie-content {
+  display: flex;
+  gap: 40px;
+  margin: 20px 0;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(41, 182, 246, 0.4);
+}
+
+.movie-info {
+  flex: 1;
+}
+
+.movie-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #0d47a1;
+  position: relative;
+  padding-bottom: 10px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.movie-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background-color: #ffca28;
+  border-radius: 2px;
+}
+
+.movie-overview {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #0d47a1;
+}
+
+.movie-info p {
+  margin: 15px 0;
+  font-size: 1.1rem;
+  color: #0d47a1;
+}
+
+.movie-info strong {
+  color: #0d47a1;
+  margin-right: 10px;
+}
+
+.movie-poster {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(41, 182, 246, 0.4);
+  transition: transform 0.3s ease;
+  border: 3px solid #ffca28;
+}
+
+.movie-poster:hover {
+  transform: scale(1.05);
+}
+
+.trailers-section {
+  margin-top: 40px;
+}
+
+.trailers-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #0d47a1;
+  position: relative;
+  padding-bottom: 10px;
+  display: inline-block;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.trailers-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #ffca28;
+  border-radius: 2px;
+}
+
+.trailers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.trailer-tile {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #29b6f6;
+}
+
+.trailer-tile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(41, 182, 246, 0.5);
+}
+
+.trailer-tile a {
+  text-decoration: none;
+  color: #0d47a1;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.trailer-thumbnail {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 3px solid #ffca28;
+}
+
+.trailer-tile h3 {
+  font-size: 1rem;
+  text-align: center;
+  color: #0d47a1;
+  padding: 10px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}

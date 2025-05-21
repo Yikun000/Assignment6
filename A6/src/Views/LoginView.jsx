@@ -1,40 +1,59 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginView.css";
-import Header from "../Components/Header";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { useStoreContext } from "../Context";
+import { useRef } from "react";
 
 function LoginView() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const { email: storedEmail, password: storedPassword, setLoggedIn } = useStoreContext();
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
 
-    const handleLogin = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        navigate("/movies");
+        
+        // If no stored credentials, redirect to register
+        if (!storedEmail || !storedPassword) {
+            alert("No account found. Please register first.");
+            navigate('/register');
+            return;
+        }
+
+        // Check if credentials match
+        if (emailRef.current.value === storedEmail && 
+            passwordRef.current.value === storedPassword) {
+            setLoggedIn(true);
+            navigate('/movies');
+        } else {
+            alert("Invalid email or password!");
+        }
     };
 
     return (
-        <>
+        <div className="login-view">
             <Header />
-            <div className="loginContainer">
-                <form className="loginForm" onSubmit={handleLogin}>
-                    <h1>Login</h1>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required/>
-                    </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required/>
-                    </div>
-                    <button type="submit">Login</button>
-                    <p>
-                        Don't have an account?{" "}
-                        <span onClick={() => navigate("/register")}>Register here</span>
-                    </p>
-                </form>
+            <div className="login-container">
+                <div className="login-box">
+                    <h2>Login to Continue</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div className="input-group">
+                            <input type="email" placeholder="Email" ref={emailRef} required/>
+                        </div>
+                        <div className="input-group">
+                            <input type="password" placeholder="Password" ref={passwordRef} required/>
+                        </div>
+                        <button type="submit" className="login-button">Login</button>
+                        <p className="register-prompt">
+                            Don't have an account?  
+                            <span className="register-link" onClick={() => navigate('/register')}> Register here </span>
+                        </p>
+                    </form>
+                </div>
             </div>
-        </>
+            <Footer />
+        </div>
     );
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import "./Feature.css";
+import "./Featured.css";
 
 function Feature() {
     const [movies, setMovies] = useState([]);
